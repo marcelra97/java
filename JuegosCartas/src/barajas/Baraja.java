@@ -1,33 +1,46 @@
 package barajas;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Baraja {
 
 	//atributos
-	private ArrayList<Integer> lista_cartas;	//lista de cartas
+	private ArrayList<Carta> lista_cartas;	//lista de cartas
 
 	
 	
 	//construcotres
 	public Baraja() { // nos crea una baraja vacia
 		
-		this.lista_cartas= new ArrayList<Integer>();
+		this.lista_cartas= new ArrayList<Carta>();
 		
 		
 	}
 	
-	public Baraja(int tipobaraja) { //nos crea la baraja españaola, luego podemos incluirle unas barajas mas.
+	public Baraja(int tipobaraja) { //nos crea la baraja española, luego podemos incluirle unas barajas mas.
 		
-		
+		this(tipobaraja, false); // llama al tercer constructor para crear una baraja sin barajearla
 		
 	}
 	
 	public Baraja(int tipobaraja, boolean barajar) { //igual que la anterior pero tiene un boleano que nos dice si hay que barajar despues de crearla o no
+
+		for(int i = 0; i < 40*tipobaraja; i++) {
+			
+			Carta c1 = new Carta(i);
+			
+			this.lista_cartas.add(c1);
+		}
 		
-		
+		if(barajar == true) {
+			
+			Barajar();
+			
+		}
+				
 	}
-	
+
 	//propiedades
 	
 	public void NumeroCartas() {
@@ -38,14 +51,36 @@ public class Baraja {
 		
 	}
 	
-	//metodo
+	//metodos
 	
-	public ArrayList<Integer> Barajar() {
+	public void Barajar() {
 		
-		return;
+		ArrayList<Carta> copiaBaraja = new ArrayList<Carta>();
+		
+		Random r = new Random();
+		
+		int random = 0;
+		int posicion = 0;
+		Carta recuperar = new Carta();
+		
+		for(int i = 0; i > this.lista_cartas.size(); i--) {
+			
+			random = r.nextInt(40);
+			recuperar = this.lista_cartas.remove(posicion);
+			
+			
+			/*Carta c1= new Carta(random);
+			posicion= r.nextInt(40); 	
+			
+			this.lista_cartas.set(posicion, c1);
+			*/
+			
+		}
+		
+		
 	}
 	
-	public int Cortar() {
+	public  Cortar() {
 		
 		return;
 	}
