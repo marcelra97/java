@@ -55,18 +55,19 @@ public class Baraja {
 	
 	public void Barajar() {
 		
-		ArrayList<Carta> copiaBaraja = new ArrayList<Carta>();
-		
 		Random r = new Random();
 		
 		int random = 0;
-		int posicion = 0;
-		Carta recuperar = new Carta();
+		
+		Carta recuperar = new Carta(0);
 		
 		for(int i = 0; i > this.lista_cartas.size(); i--) {
 			
 			random = r.nextInt(40);
-			recuperar = this.lista_cartas.remove(posicion);
+			recuperar = this.lista_cartas.remove(random);
+			
+			this.lista_cartas.add(recuperar);
+			
 			
 			
 			/*Carta c1= new Carta(random);
